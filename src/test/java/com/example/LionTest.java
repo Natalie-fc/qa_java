@@ -17,20 +17,20 @@ public class LionTest {
 
     @Test
     public void doesHaveManeReturnsTrueForMale() throws Exception {
-        Lion lion = new Lion("Самец", new Feline());
+        lion = new Lion("Самец", feline, feline);
         assertTrue(lion.doesHaveMane());
     }
 
     @Test
     public void doesHaveManeReturnsFalseForFemale() throws Exception {
-        Lion lion = new Lion("Самка", new Feline());
+        lion = new Lion("Самка", feline, feline);
         assertFalse(lion.doesHaveMane());
     }
 
     @Test
     public void getKittensReturnsMockedValue() throws Exception {
         when(feline.getKittens()).thenReturn(4);
-        lion = new Lion("Самец", feline);
+        lion = new Lion("Самец", feline, feline);
         assertEquals(4, lion.getKittens());
     }
 
@@ -38,13 +38,13 @@ public class LionTest {
     public void getFoodReturnsMockedList() throws Exception {
         List<String> expectedFood = List.of("Мясо", "Рыба");
         when(feline.eatMeat()).thenReturn(expectedFood);
-            lion = new Lion("Самка", feline);
+            lion = new Lion("Самка", feline, feline);
             assertEquals(expectedFood, lion.getFood());
     }
 
     @Test(expected = Exception.class)
     public void constructorThrowsExceptionForInvalidSex() throws Exception {
-        new Lion("Нечто", feline);
+        new Lion("Нечто", feline, feline);
     }
 
 }
