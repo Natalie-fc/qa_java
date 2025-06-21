@@ -12,39 +12,41 @@ import static org.mockito.Mockito.when;
 public class LionTest {
 
     @Mock
-    Feline feline;
-    Lion lion;
+    Predator predator;
+
+    @Mock
+    ParentingAnimal parentingAnimal;
 
     @Test
     public void doesHaveManeReturnsTrueForMale() throws Exception {
-        lion = new Lion("Самец", feline, feline);
+       Lion lion = new Lion("Самец", predator, parentingAnimal);
         assertTrue(lion.doesHaveMane());
     }
 
     @Test
     public void doesHaveManeReturnsFalseForFemale() throws Exception {
-        lion = new Lion("Самка", feline, feline);
+       Lion lion = new Lion("Самка", predator, parentingAnimal);
         assertFalse(lion.doesHaveMane());
     }
 
     @Test
     public void getKittensReturnsMockedValue() throws Exception {
-        when(feline.getKittens()).thenReturn(4);
-        lion = new Lion("Самец", feline, feline);
+        when(parentingAnimal.getKittens()).thenReturn(4);
+       Lion lion = new Lion("Самец", predator, parentingAnimal);
         assertEquals(4, lion.getKittens());
     }
 
     @Test
     public void getFoodReturnsMockedList() throws Exception {
         List<String> expectedFood = List.of("Мясо", "Рыба");
-        when(feline.eatMeat()).thenReturn(expectedFood);
-            lion = new Lion("Самка", feline, feline);
+        when(predator.eatMeat()).thenReturn(expectedFood);
+           Lion lion = new Lion("Самка", predator, parentingAnimal);
             assertEquals(expectedFood, lion.getFood());
     }
 
     @Test(expected = Exception.class)
     public void constructorThrowsExceptionForInvalidSex() throws Exception {
-        new Lion("Нечто", feline, feline);
+        new Lion("Нечто", predator, parentingAnimal);
     }
 
 }
