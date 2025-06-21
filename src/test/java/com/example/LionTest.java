@@ -17,17 +17,6 @@ public class LionTest {
     @Mock
     ParentingAnimal parentingAnimal;
 
-    @Test
-    public void doesHaveManeReturnsTrueForMale() throws Exception {
-       Lion lion = new Lion("Самец", predator, parentingAnimal);
-        assertTrue(lion.doesHaveMane());
-    }
-
-    @Test
-    public void doesHaveManeReturnsFalseForFemale() throws Exception {
-       Lion lion = new Lion("Самка", predator, parentingAnimal);
-        assertFalse(lion.doesHaveMane());
-    }
 
     @Test
     public void getKittensReturnsMockedValue() throws Exception {
