@@ -3,10 +3,8 @@ package com.example;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -29,7 +27,7 @@ public class LionParameterizedTest {
     }
         @Test
         public void testDoesHaveMane () throws Exception {
-            Lion lion = new Lion(sex, new Feline(), new Feline());
+            Lion lion = new Lion(sex, new Feline());
             assertEquals(expectedHasMane, lion.doesHaveMane());
         }
 
